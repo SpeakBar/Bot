@@ -42,13 +42,13 @@ class CommandesAdmin(commands.Cog):
     @commands.command()
     @commands.has_permissions(administrator = True)
     async def stars_channel(self, ctx):
-        with open(path + '/json/dashboard.json') as data:
+        with open(path + '/json/channel.json') as data:
             stars = json.load(data)
 
         if ctx.message.author == self.bot.user:
             return
 
-        for scv in stars['stars_channel']:
+        for scv in stars['stars']['channel']:
             if ctx.message.channel.id == int(scv):
                 msg = await ctx.send('channel déjà enregistrée.')
                 await asyncio.sleep(3)
@@ -56,11 +56,11 @@ class CommandesAdmin(commands.Cog):
                 await msg.delete()
                 return
 
-        stars['stars_channel'].append(f'{ctx.message.channel.id}')
+        stars['stars']['channel'].append(f'{ctx.message.channel.id}')
 
         y = json.dumps(stars)
 
-        f = open(path + "/json/dashboard.json", "w")
+        f = open(path + "/json/channel.json", "w")
         f.write(y)
         f.close()
 
@@ -68,14 +68,14 @@ class CommandesAdmin(commands.Cog):
     
     @commands.command()
     async def annonce_channel(self, ctx):
-        with open(path + '/json/dashboard.json') as data:
+        with open(path + '/json/channel.json') as data:
             stars = json.load(data)
 
-        stars['annonce_channel'].append(f'{ctx.message.channel.id}')
+        stars['annonce']['channel'].append(f'{ctx.message.channel.id}')
 
         y = json.dumps(stars)
 
-        f = open(path + "/json/dashboard.json", "w")
+        f = open(path + "/json/channel.json", "w")
         f.write(y)
         f.close()
 

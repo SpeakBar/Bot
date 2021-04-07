@@ -21,8 +21,8 @@ path = fetch_path.replace("\\", "/")
 def setup(bot):
     bot.add_cog(Support(bot))
 
-with open(path + '/json/dashboard.json') as data:
-    dashboard = json.load(data)
+with open(path + '/json/channel.json') as data:
+    channel = json.load(data)
 
 class Support(commands.Cog):
     def __init__(self, bot):
@@ -33,7 +33,7 @@ class Support(commands.Cog):
         if reaction.message.author == bot.user:
             return
 
-        for support in int(dashboard['ticket_channel']):
+        for support in int(dashboard['ticket']['channel']):
             if reaction.message.channel == support:
                 if reaction.emoji == "✉️":
                     print('ok')

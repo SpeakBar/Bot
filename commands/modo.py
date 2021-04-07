@@ -126,25 +126,6 @@ class Moderation(commands.Cog):
         await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=True)
         await ctx.send('Channel débloquait')
     
-    @commands.command(aliases=['blist'])
-    @commands.has_permissions(ban_members = True)
-    async def black_list(self, ctx, user : discord.User):
-        with open(path + '/json/black_list.json') as data:
-            bl = json.load(data)
-        
-        bl['users'].append(f'{ctx.message.channel.id}')
-
-        y = json.dumps(bl)
-
-        f = open(path + "/json/black_list.json", "w")
-        f.write(y)
-        f.close()
-
-        embed = discord.Embed(title="Black Liste", description=f"l'user {user.name} a été black list.", timestamp = datetime.datetime.utcnow(), color=discord.Colour(int("FFD51A", 16)))
-        embed.set_thumbnail(url = user.avatar_url)
-
-        await ctx.send(embed=embed)
-    
     @commands.command()
     @commands.has_permissions(manage_channels = True)
     async def nuke(self, ctx, channel: discord.TextChannel = None):

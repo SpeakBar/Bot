@@ -25,7 +25,7 @@ class Information(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @commands.command(aliases=['si', 'info', 'server'], help=f" {self.bot.command_prefix}serverInfo ", description="Commande pour connaitre toutes les informations du serveur.")
+    @commands.command(aliases=['si', 'info', 'server'], help=f"serverInfo ", description="Commande pour connaitre toutes les informations du serveur.")
     async def serverInfo(self, ctx):
         embed = discord.Embed(title=f"Toutes les informations du serveur {ctx.guild.name} ", timestamp = datetime.datetime.utcnow(), color=discord.Colour(int("FFD51A", 16)))
         embed.set_thumbnail(url=ctx.guild.icon_url)
