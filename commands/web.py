@@ -36,6 +36,8 @@ class Web(commands.Cog):
         ui = requests.post("https://speakbar.fr/api/user", data={'discord_id': user_id})
         data_ui = ui.json()
 
+        print(data_ui)
+
         # Send
         try:
             # Embed
@@ -78,11 +80,15 @@ class Web(commands.Cog):
 
                 await ctx.send(embed=embed)
                 
-            except Exception as exception:
+            except:
                 # Embed
-                embed = discord.Embed(title=f"Information SpeakBar sur {user.name} ", description=f"Se compte n\'existe pas.", timestamp = datetime.datetime.utcnow(), color=discord.Colour(int("FFD51A", 16)))
+                embed = discord.Embed(title=f"Information SpeakBar sur {ctx.message.author.name} ", description=f"Se compte n\'existe pas.", timestamp = datetime.datetime.utcnow(), color=discord.Colour(int("FFD51A", 16)))
 
                 await ctx.send(embed=embed)
+            
+            return
+        
+        print(f"Erreur : {error}")
     
     @commands.command(help="Commande pour m'inviter sur votre serveur.", aliases=["me"])
     async def invite(self, ctx):

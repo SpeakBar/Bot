@@ -24,6 +24,11 @@ def setup(bot):
 class Reaction_event(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+        global voc_id
+        voc_id=[]
+        global voc_user
+        voc_user=[]
     
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):

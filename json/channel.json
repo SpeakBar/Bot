@@ -18,8 +18,8 @@
     }, 
 
     "welcome": {
-        "channel": ["781105165754433540", "745334117184438460"],
-        "sentences": ["Ho bien le bonjour {user}", "{user} tu as ramené de la pizza ?"]
+        "channel": ["781105165754433540", "745334117184438460", 781114575557885977],
+        "sentences": ["Ho bien le bonjour {user}", "{user} tu as ramené de la pizza ?", "Hey {user}, viens prendre un verre avec nous !"]
     },
 
     "goodbye": {

@@ -24,18 +24,12 @@ with open(path + '/config.json') as data:
     config = json.load(data)
 
 hello_variable = [
-    "Salut",
     "salut",
-    "Hello",
     "hello",
-    "Hi",
     "hi",
-    "Yo",
     "yo",
     "bjr",
-    "Bonjour",
     "bonjour"
-    "Hey",
     "hey"
 ]
 
@@ -55,20 +49,6 @@ async def on_ready():
         print("ready")
     
     await bot.change_presence(status = discord.Status.online ,activity=discord.Game("Speakbar.fr"))
-    
-    #Voc init
-    global voc_id
-    voc_id=[]
-    global voc_user
-    voc_user=[]
-
-    # Warn
-    global warn_server
-    warn_server=[]
-    global warn_id
-    warn_id=[]
-    global warn_number
-    warn_number=[]
 
     # Load de Commands
     for files in os.listdir(path + '/commands'):
@@ -108,6 +88,8 @@ async def on_ready():
 @bot.event
 async def on_message(message):
 
+    msg = message.content.lower()
+
     with open(path + '/json/channel.json') as data:
         channel = json.load(data)
 
@@ -137,7 +119,7 @@ async def on_message(message):
         await message.channel.send('Voila mon prefix : **' + bot.command_prefix + '**')
 
     for var in hello_variable:
-        if message.content.startswith(var):
+        if msg.startswith(var):
             await message.add_reaction('👋')
 
     await bot.process_commands(message)
@@ -149,13 +131,25 @@ async def on_message(message):
 @bot.command()
 @commands.check(isOwner)
 async def reload(ctx):
-    commands_list = os.listdir('commands')
-    for files in commands_list:
-        if(files != "__pycache__"):
-                
+    for files in os.listdir(path + '/commands'):
+
+        if files != "__pycache__":
+            if os.path.isdir(path + '/commands/' + files):
+                folder = path + '/commands/' + files
+                for command_file in os.listdir(folder):
+                    if command_file != "__pycache__":
+
+                        try:
+                            bot.reload_extension(f"commands.{files}." + command_file[:-3])
+                        except:
+                            bot.load_extension(f"commands.{files}." + command_file[:-3])
+        
+        if os.path.isfile(path + "/commands/" + files):
             try:
                 bot.reload_extension("commands." + files[:-3])
             except:
                 bot.load_extension("commands." + files[:-3])
+
+    await ctx.send('Tous les fichiers sont reload.')
 
 bot.run(config['token'])

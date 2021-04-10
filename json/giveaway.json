@@ -1,5 +1,1 @@
-{
-    "giveaway": [
-        {"server_id": 123, "creator": "", "reward": "oidoisf", "created_at": "24/04/2020", "expire": "25/04/2020/13/30"}
-    ]
-}
+{"giveaway": [{"server_id": 123, "creator": "", "reward": "oidoisf", "created_at": "24/04/2020", "expire": "25/04/2020/13/30"}, {"server_id": 781105165754433537, "creator": "ctx.author", "reward": "TEs", "created_at": "Test", "expire": "12/12/12/12"}, {"server_id": 781105165754433537, "creator": "ctx.author", "reward": "sdf", "created_at": "21/00/09/04", "expire": "12/12/12/12"}, {"server_id": 781105165754433537, "creator": "ctx.author", "reward": "Test", "created_at": "31/15/09/04", "expire": "12/12/12/12", "msg_giveaway_id": 830072548015996930}, {"server_id": 781105165754433537, "creator": "ctx.author", "reward": "Test", "nb_winner": 2, "created_at": "39/15/09/04", "expire": "12/12/12/12", "msg_giveaway_id": 830074489642549279}], "user": []}
