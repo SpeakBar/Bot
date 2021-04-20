@@ -16,19 +16,20 @@ import aiohttp
 import json
 
 # class
+from class_folder.feeling_class import Feeling_Class
+gifs = Feeling_Class()
 
 fetch_path = os.getcwd()
 path = fetch_path.replace("\\", "/")
 
 def setup(bot):
-    bot.add_cog(Fun(bot))
+    bot.add_cog(test(bot))
 
-class Fun(commands.Cog):
+class test(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
     
-    @commands.command(help="Donne une réponse alléatoire a votre question.")
-    async def ask(self, ctx):
-        reponse = ["Oui.", "Non.", "Peut-être.", "Certainement pas.", "Carrément.", "Oui.... Mais non.", "Absolument"]
-        await ctx.send(random.choice(reponse))
+    @commands.command()
+    async def help2(self, ctx):
+        print(self.bot.cogs)

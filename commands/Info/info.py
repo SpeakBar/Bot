@@ -64,6 +64,8 @@ class Information(commands.Cog):
                     found = False
                     for x in self.bot.cogs:
                         for y in cog:
+                            print(cog)
+                            print(self.bot.get_cog(y).get_commands())
                             if x == y:
                                 halp=discord.Embed(title=cog[0]+' Commandes Listes :',description=self.bot.cogs[cog[0]].__doc__, timestamp = datetime.datetime.utcnow(), color=discord.Colour(int("FFD51A", 16)))
                                 for c in self.bot.get_cog(y).get_commands():

@@ -16,16 +16,16 @@ import aiohttp
 import json
 
 # class
-from class_folder.fun_class import Fun_Class
-gifs = Fun_Class()
+from class_folder.feeling_class import Feeling_Class
+gifs = Feeling_Class()
 
 fetch_path = os.getcwd()
 path = fetch_path.replace("\\", "/")
 
 def setup(bot):
-    bot.add_cog(Fun(bot))
+    bot.add_cog(Feeling(bot))
 
-class Fun(commands.Cog):
+class Feeling(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot

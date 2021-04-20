@@ -20,9 +20,9 @@ fetch_path = os.getcwd()
 path = fetch_path.replace("\\", "/")
 
 def setup(bot):
-    bot.add_cog(Reaction_event(bot))
+    bot.add_cog(Join_event(bot))
 
-class Reaction_event(commands.Cog):
+class Join_event(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     

@@ -1,1 +1,22 @@
-{}
+{
+    "premium": [805868500211335219, 784078125361397781],
+    
+    "staff": {
+        "dev": {
+            "emoji": "",
+            "roles_id": []
+        },
+        "admin": {
+            "emoji": "",
+            "roles_id": []
+        },
+        "redacteur": {
+            "emoji": "",
+            "roles_id": []
+        },
+        "modo": {
+            "emoji": "",
+            "roles_id": []
+        }
+    }
+}

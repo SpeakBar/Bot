@@ -23,11 +23,16 @@ path = fetch_path.replace("\\", "/")
 def setup(bot):
     bot.add_cog(Admin(bot))
 
+def isOwner(ctx):
+    for owner_bot in config['owner_id']:
+        return ctx.message.author.id == int(owner_bot)
+
 class Admin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
     @commands.command()
+    @commands.check(isOwner)
     async def giveaway(self, ctx):
 
         def check(m):

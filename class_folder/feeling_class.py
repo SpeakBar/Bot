@@ -1,7 +1,7 @@
 import random
 import requests
 
-class Fun_Class():
+class Feeling_Class():
     
     def gif_api(self, search):
         apikey = "LIVDSRZULELA"  # test value

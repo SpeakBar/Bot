@@ -15,20 +15,25 @@ import aiohttp
 
 import json
 
-# class
+from class_folder.premium_class import Premium_Class
+premium = Premium_Class()
 
 fetch_path = os.getcwd()
 path = fetch_path.replace("\\", "/")
 
 def setup(bot):
-    bot.add_cog(Fun(bot))
+    bot.add_cog(Premium(bot))
 
-class Fun(commands.Cog):
-
+class Premium(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    
-    @commands.command(help="Donne une réponse alléatoire a votre question.")
-    async def ask(self, ctx):
-        reponse = ["Oui.", "Non.", "Peut-être.", "Certainement pas.", "Carrément.", "Oui.... Mais non.", "Absolument"]
-        await ctx.send(random.choice(reponse))
+
+    @commands.command()
+    async def premium(self, ctx):
+
+        await premium.check_premium(ctx)
+
+    @commands.command()
+    async def p_move(self, ctx, user: discord.User):
+        voice_state = ctx.member.voice
+        voice_user_state = user.voice

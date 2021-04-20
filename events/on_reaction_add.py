@@ -27,23 +27,21 @@ class Reaction_event(commands.Cog):
     
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
-
+       
         with open(path + '/json/channel.json') as data:
             dashboard = json.load(data)
-        with open(path + '/json/bdd.json') as data:
-            bdd = json.load(data)
 
-        if reaction.message.author == bot.user:
+        if reaction.message.author == self.bot.user:
             return
         
         if reaction.emoji == '🌟':
             if reaction and reaction.count == 1:
-                for bs in bdd['stars_message']:
+                for bs in dashboard['stars']['message']:
                     if int(bs) == reaction.message.id:
                         return
 
-                server = bot.get_guild(reaction.message.guild.id)
-                for c in dashboard['stars_channel']:
+                server = self.bot.get_guild(reaction.message.guild.id)
+                for c in dashboard['stars']['channel']:
                     if server.get_channel(int(c)):
 
                         channel = server.get_channel(int(c))
@@ -55,11 +53,11 @@ class Reaction_event(commands.Cog):
                         await channel.send(embed=embed)
 
                 ############# BDD ##############
-                bdd['stars_message'].append(f'{reaction.message.id}')
+                dashboard['stars']['message'].append(f'{reaction.message.id}')
 
-                y = json.dumps(bdd)
+                y = json.dumps(dashboard)
 
-                f = open(path + "/json/bdd.json", "w")
+                f = open(path + "/json/channel.json", "w")
                 f.write(y)
                 f.close()
                 ############# BDD ##############

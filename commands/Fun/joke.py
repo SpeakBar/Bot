@@ -16,8 +16,6 @@ import aiohttp
 import json
 
 # class
-from class_folder.fun_class import Fun_Class
-gifs = Fun_Class()
 
 fetch_path = os.getcwd()
 path = fetch_path.replace("\\", "/")
